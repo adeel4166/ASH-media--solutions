@@ -1,0 +1,170 @@
+body { 
+    margin: 0; 
+    font-family: 'Poppins', sans-serif; 
+    background: #fff; 
+    color: #000; 
+    overflow-x: hidden; 
+}
+
+/* ==== Hero Section ==== */
+.clients-hero {
+    padding: 100px 50px 40px;
+    text-align: center;
+    background: linear-gradient(120deg, #f1f1f1 50%, #e6f2ff 100%);
+}
+.clients-hero h1 {
+    font-size: 3rem; font-weight: 800; color: #4ba3ff;
+    text-shadow: 0 0 10px rgba(75,163,255,0.7), 0 0 20px rgba(75,163,255,0.5);
+    animation: glowPulse 2s ease-in-out infinite;
+}
+.clients-hero p { 
+    font-size: 1.2rem; 
+    color: #444; 
+    margin-top: 10px; 
+}
+
+/* ==== Logo Slider ==== */
+.logo-slider {
+    padding: 40px 0;
+    background: #f0f8ff;
+}
+.swiper {
+    width: 100%;
+    padding: 20px 0;
+}
+.swiper-wrapper {
+    display: flex;
+    align-items: center;
+}
+.swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-slide img {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(75,163,255,0.5));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.swiper-slide img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(75,163,255,0.9));
+}
+
+/* ==== Section Headings ==== */
+.section-heading {
+    font-size: 2.5rem; 
+    font-weight: 700; 
+    text-align: center;
+    color: #4ba3ff;
+    text-shadow: 0 0 10px rgba(75,163,255,0.7), 0 0 20px rgba(75,163,255,0.5);
+    animation: glowPulse 2s ease-in-out infinite;
+    margin: 60px 0 20px;
+    transition: transform 0.3s ease;
+}
+.section-heading:hover { 
+    transform: scale(1.05); 
+    text-shadow: 0 0 25px rgba(75,163,255,1), 0 0 40px rgba(75,163,255,0.8); 
+}
+
+/* ==== Clients Grid ==== */
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px; 
+    padding: 0 30px 50px; 
+    justify-items: center;
+}
+.client-card {
+    background: #fff; 
+    border: 1px solid #e0e0e0;
+    padding: 20px 15px; 
+    border-radius: 12px; 
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.client-card:hover { 
+    transform: translateY(-10px) scale(1.03); 
+    box-shadow: 0 0 25px rgba(75,163,255,0.6), 0 0 40px rgba(75,163,255,0.4); 
+}
+.client-card img {
+    width: 100px; 
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(75,163,255,0.5));
+    margin-bottom: 15px; 
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.client-card:hover img { 
+    transform: scale(1.1); 
+    filter: drop-shadow(0 0 20px rgba(75,163,255,1)); 
+}
+.client-card h3 { 
+    font-size: 1.1rem; 
+    margin-bottom: 5px; 
+    color: #4ba3ff; 
+    font-weight: 600; 
+    transition: text-shadow 0.3s ease; 
+}
+.client-card:hover h3 { 
+    text-shadow: 0 0 15px rgba(75,163,255,1); 
+}
+.client-card p { 
+    font-size: 0.9rem; 
+    color: #555; 
+}
+
+/* ==== CTA Section ==== */
+.cta-section {
+    padding: 100px 50px; 
+    text-align: center;
+    background: linear-gradient(120deg, #e6f2ff 40%, #ffffff 100%);
+}
+.cta-section h2 {
+    font-size: 2.5rem; 
+    margin-bottom: 20px; 
+    color: #4ba3ff;
+    text-shadow: 0 0 10px rgba(75,163,255,0.7), 0 0 20px rgba(75,163,255,0.5);
+    animation: glowPulse 2s ease-in-out infinite;
+}
+.cta-section p { 
+    font-size: 1.1rem; 
+    color: #555; 
+    margin-bottom: 40px; 
+}
+.cta-section .cta-btn {
+    background: #4ba3ff; 
+    padding: 14px 30px; 
+    border-radius: 30px;
+    font-size: 1.1rem; 
+    font-weight: 600; 
+    color: #fff; 
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.cta-section .cta-btn:hover { 
+    background: #fff; 
+    color: #4ba3ff; 
+    box-shadow: 0 0 25px rgba(75,163,255,0.9); 
+}
+
+/* ==== Glow Pulse ==== */
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px rgba(75,163,255,0.7),0 0 20px rgba(75,163,255,0.5); }
+  50% { text-shadow: 0 0 20px rgba(75,163,255,1),0 0 40px rgba(75,163,255,0.7); }
+  100% { text-shadow: 0 0 10px rgba(75,163,255,0.7),0 0 20px rgba(75,163,255,0.5); }
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+    .clients-grid { 
+        gap: 10px; 
+        padding: 0 15px 30px; 
+    }
+}
+
+
+
+

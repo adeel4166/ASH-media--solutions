@@ -1,0 +1,11 @@
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+</form>
+
+{% if success %}
+<p style="color:green;">Message sent successfully!</p>
+{% endif %}

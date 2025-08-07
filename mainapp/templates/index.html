@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | My Agency{% endblock title %}
+
+{% block content %}
+<div id="preloader"><span></span></div>
+<div class="glow-bg">
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+</div>
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="{% static 'img/content.mp4' %}" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+  <div class="hero-content">
+    <h1>Your Digital Growth Partner</h1>
+    <p>We empower businesses with data-driven strategies and creative designs.</p>
+  </div>
+</section>
+
+
+
+<section class="agency-overview">
+  <div class="agency-text">
+    <h2>We Build Brands That Stand Out</h2>
+    <p>Our marketing agency specializes in digital campaigns, brand identity, and content creation to ensure your message reaches the right audience.</p>
+    <a href="#contact" class="cta-btn">Work With Us</a>
+  </div>
+  <div class="agency-image">
+    <img src="{% static 'img/1.jpeg' %}" alt="Agency Image">
+  </div>
+</section>
+<!-- === TEAM SECTION PREMIUM === -->
+<section class="team-section fade-in" id="team">
+  <div class="team-heading">
+    <h2>Meet With Founders</h2>
+    <span class="underline"></span>
+    <p>Our passionate professionals who make everything possible.</p>
+  </div>
+
+  <!-- Swiper -->
+  <div class="swiper team-swiper">
+    <div class="swiper-wrapper">
+      
+      <div class="swiper-slide">
+        <div class="team-card">
+          <img src="{% static 'img/8.zafi.jpeg' %}" alt="Huzaifa">
+          <div class="team-details">
+            <h3>Huzaifa</h3>
+            <p>CEO & Founder</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="team-card">
+          <img src="{% static 'img/4.shery.jpeg' %}" alt="Shehryar Khan">
+          <div class="team-details">
+            <h3>Shehryar Khan</h3>
+            <p>Creative Director</p>
+          </div>
+        </div>
+      </div>
+
+    
+      <div class="swiper-slide">
+        <div class="team-card">
+          <img src="{% static 'img/9.AFTAB.jpeg' %}" alt="Aftab Ahmed">
+          <div class="team-details">
+            <h3>Aftab Ahmed</h3>
+            <p>UI/UX Designer</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+
+
+<section class="campaign-gallery">
+  <h2>Our Recent Campaigns</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="{% static 'img/clients/1.jpeg' %}" alt="Campaign 1"></div>
+    <div class="gallery-item"><img src="{% static 'img/clients/2.jpeg' %}" alt="Campaign 2"></div>
+    <div class="gallery-item"><img src="{% static 'img/clients/3.jpeg' %}" alt="Campaign 3"></div>
+    <div class="gallery-item"><img src="{% static 'img/clients/4.jpeg' %}" alt="Campaign 4"></div>
+  </div>
+</section>
+
+
+<!-- ==== Clients Section ==== -->
+<section class="clients" id="clients">
+<section class="clients-hero">
+  <div class="clients-glow-bg">
+   <div class="clients-orb orb1"></div>
+    <div class="clients-orb orb2"></div>
+    <h1>Our Valued Clients</h1>
+    <p>We are proud to collaborate with innovative brands and companies worldwide.</p>
+</section>
+
+<!-- ==== Premium Clients Section ==== -->
+<section class="clients-section fade-in">
+ 
+  <div class="clients-slider">
+    <img src="{% static 'img/clients/1.jpeg' %}" alt="Client 1">
+    <img src="{% static 'img/clients/2.jpeg' %}" alt="Client 2">
+    <img src="{% static 'img/clients/3.jpeg' %}" alt="Client 3">
+    <img src="{% static 'img/clients/4.jpeg' %}" alt="Client 4">
+    <img src="{% static 'img/clients/5.jpeg' %}" alt="Client 5">
+    <!-- duplicate for infinite loop -->
+    <img src="{% static 'img/clients/1.jpeg' %}" alt="Client 1">
+    <img src="{% static 'img/clients/2.jpeg' %}" alt="Client 2">
+    <img src="{% static 'img/clients/3.jpeg' %}" alt="Client 3">
+    <img src="{% static 'img/clients/4.jpeg' %}" alt="Client 4">
+    <img src="{% static 'img/clients/5.jpeg' %}" alt="Client 5">
+  </div>
+</section>
+<!-- ==== End Clients Section ==== -->
+
+
+
+<!-- Premium Clients -->
+<h2 class="section-heading">Partners who trust ASH Media Solutions</h2>
+<section class="clients-grid" id="premiumClients">
+    <div class="client-card"><img src="{% static 'img/clients/1.jpeg' %}" alt="Premium Client 1"><h3>Premium Client 1</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/2.jpeg' %}" alt="Premium Client 2"><h3>Premium Client 2</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/3.jpeg' %}" alt="Premium Client 3"><h3>Premium Client 3</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/4.jpeg' %}" alt="Premium Client 4"><h3>Premium Client 4</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/5.jpeg' %}" alt="Premium Client 5"><h3>Premium Client 5</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/6.jpeg' %}" alt="Premium Client 6"><h3>Premium Client 6</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/7.jpeg' %}" alt="Premium Client 7"><h3>Premium Client 7</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/8.jpeg' %}" alt="Premium Client 8"><h3>Premium Client 8</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/9.jpeg' %}" alt="Premium Client 9"><h3>Premium Client 9</h3><p>Leading global brand collaboration.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/10.jpeg' %}" alt="Premium Client 10"><h3>Premium Client 10</h3><p>Leading global brand collaboration.</p></div>
+</section>
+
+<!-- Local Clients -->
+<h2 class="section-heading">Local Clients</h2>
+<section class="clients-grid" id="localClients">
+    <div class="client-card"><img src="{% static 'img/clients/11.jpeg' %}" alt="Local Client 1"><h3>Local Client 1</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/12.jpeg' %}" alt="Local Client 2"><h3>Local Client 2</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/13.jpeg' %}" alt="Local Client 3"><h3>Local Client 3</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/14.jpeg' %}" alt="Local Client 4"><h3>Local Client 4</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/15.jpeg' %}" alt="Local Client 5"><h3>Local Client 5</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/16.jpeg' %}" alt="Local Client 6"><h3>Local Client 6</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/17.jpeg' %}" alt="Local Client 7"><h3>Local Client 7</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/18.jpeg' %}" alt="Local Client 8"><h3>Local Client 8</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/19.jpeg' %}" alt="Local Client 9"><h3>Local Client 9</h3><p>Empowering small and medium enterprises.</p></div>
+    <div class="client-card"><img src="{% static 'img/clients/20.jpeg' %}" alt="Local Client 10"><h3>Local Client 10</h3><p>Empowering small and medium enterprises.</p></div>
+</section>
+
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <h2>Want to Work With Us?</h2>
+    <p>Join hundreds of satisfied clients and experience the premium solutions we deliver.</p>
+    <a href="#contact" class="cta-btn">Get in Touch</a>
+</section>
+{% comment %} packages section {% endcomment %}
+
+<!-- Services Section -->
+<section class="services" id="services">
+  <h2>Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <i class="fas fa-bullhorn"></i>
+      <h3>Digital Marketing</h3>
+      <p>Boost your business presence with data-driven digital strategies and marketing campaigns.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-paint-brush"></i>
+      <h3>Brand Design</h3>
+      <p>Create a memorable brand identity with our expert graphic and brand design solutions.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-chart-line"></i>
+      <h3>SEO & Analytics</h3>
+      <p>Improve your website ranking and track growth with advanced SEO and analytics tools.</p>
+    </div>
+  </div>
+</section>
+<!-- PortFolio Section -->
+ <section class="portfolio" id="portfolio">
+  <h2>Our Portfolio</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="{% static 'img/1.jpeg' %}" alt="Campaign 1"></div>
+    <div class="gallery-item"><img src="{% static 'img/campaign2.jpg' %}" alt="Campaign 2"></div>
+    <div class="gallery-item"><img src="{% static 'img/campaign3.jpg' %}" alt="Campaign 3"></div>
+    <div class="gallery-item"><img src="{% static 'img/campaign4.jpg' %}" alt="Campaign 4"></div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <p>"Their digital campaigns boosted our sales by 40% in 3 months!"</p>
+            <h4>- John Doe, CEO XYZ</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"Creative designs and brand strategy gave our company a fresh new image."</p>
+            <h4>- Sarah Lee, Marketing Head</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"Professional, reliable, and results-oriented. Highly recommended!"</p>
+            <h4>- Mike Anderson, Startup Founder</h4>
+        </div>
+    </div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p id="status-msg" style="display:none; font-weight:600; margin-bottom:20px;"></p>
+
+  <form id="contact-form">
+    <input type="text" name="user_name" placeholder="Your Name" required />
+    <input type="email" name="user_email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="cta-btn">Send Message</button>
+  </form>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const section = document.querySelector('.clients-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          section.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(section);
+  });
+</script>
+
+{% endblock content %}

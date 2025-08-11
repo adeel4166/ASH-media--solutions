@@ -165,3 +165,41 @@ var swiper = new Swiper(".mySwiper", {
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".packages-carousel").classList.add("show");
 });
+
+
+// Mobile drawer logic
+(function () {
+  const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const openBtn = document.getElementById('menuToggle');
+  const closeBtn = document.getElementById('drawerClose');
+
+  if (!drawer || !overlay || !openBtn || !closeBtn) return;
+
+  function openDrawer() {
+    drawer.classList.add('active');
+    overlay.classList.add('active');
+    overlay.hidden = false;
+    drawer.setAttribute('aria-hidden', 'false');
+    openBtn.setAttribute('aria-expanded', 'true');
+    const firstLink = drawer.querySelector('a');
+    setTimeout(() => firstLink && firstLink.focus(), 10);
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('active');
+    overlay.classList.remove('active');
+    drawer.setAttribute('aria-hidden', 'true');
+    openBtn.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = '';
+    setTimeout(() => { overlay.hidden = true; }, 250);
+  }
+
+  openBtn.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('active')) closeDrawer();
+  });
+})();

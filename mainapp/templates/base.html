@@ -90,11 +90,26 @@
         <li><a href="#team">Team</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </nav>
-  </header>
+     <button id="menuToggle" class="hamburger" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
+     <span></span><span></span><span></span>
+     </button>
+     <!-- Overlay -->
+<div id="drawerOverlay" class="drawer-overlay" hidden></div>
+
+<!-- Mobile Drawer -->
+<nav id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+  <button id="drawerClose" class="drawer-close" aria-label="Close menu">×</button>
+  <ul class="drawer-list">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+</header>
 
   <!-- ===== Main Content ===== -->
   <main>

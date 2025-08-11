@@ -73,30 +73,35 @@
 <body>
   <!-- ===== Header ===== -->
   <header>
-    <nav class="navbar">
-      <div class="logo">
-        <img src="{% static 'img/7.logo.png' %}" alt="ASH Media Solutions Logo">
-        <div class="logo-text">
-          <span>ASH Media Solutions</span>
-          <div class="logo-underline"></div>
-        </div>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="{% static 'img/7.logo.png' %}" alt="ASH Media Solutions Logo">
+      <div class="logo-text">
+        <span>ASH Media Solutions</span>
+        <div class="logo-underline"></div>
       </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#clients">Clients</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-     <button id="menuToggle" class="hamburger" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
-     <span></span><span></span><span></span>
-     </button>
-     <!-- Overlay -->
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button id="menuToggle" class="hamburger" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Overlay + Drawer MUST be outside header/nav -->
 <div id="drawerOverlay" class="drawer-overlay" hidden></div>
 
-<!-- Mobile Drawer -->
 <nav id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
   <button id="drawerClose" class="drawer-close" aria-label="Close menu">×</button>
   <ul class="drawer-list">
@@ -109,7 +114,6 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-</header>
 
   <!-- ===== Main Content ===== -->
   <main>

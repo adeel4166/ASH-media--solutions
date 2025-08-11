@@ -223,28 +223,38 @@
 <!-- EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-<!-- EmailJS Form Script -->
-<script>
-  emailjs.init("IsCQm8zrwb9vBLUII"); // Replace with your actual public key from EmailJS
 
-  document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-{% comment %} TAMPLATE {% endcomment %}
-    emailjs.sendForm("service_yurcrvb", "template_xo6xnbc", this).then(
-      function (response) {
-        const msg = document.getElementById("status-msg");
-        msg.style.display = "block";
-        msg.style.color = "green";
-        msg.textContent = "Message sent successfully!";
-        document.getElementById("contact-form").reset();
-      },
-      function (error) {
-        const msg = document.getElementById("status-msg");
-        msg.style.display = "block";
-        msg.style.color = "red";
-        msg.textContent = "Failed to send message. Please try again.";
-      }
-    );
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+  // Replace with your actual EmailJS credentials
+  emailjs.init("IsCQm8zrwb9vBLUII"); // 🔁 From https://dashboard.emailjs.com/admin/account
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs.sendForm("service_yurcrvb", "template_79j7yun", this).then(
+          function () {
+            const msg = document.getElementById("status-msg");
+            msg.style.display = "block";
+            msg.style.color = "green";
+            msg.textContent = "Message sent successfully!";
+            form.reset();
+          },
+          function (error) {
+            const msg = document.getElementById("status-msg");
+            msg.style.display = "block";
+            msg.style.color = "red";
+            msg.textContent = "Failed to send message. Please try again.";
+          }
+        );
+      });
+    }
   });
 </script>
 

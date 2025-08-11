@@ -167,88 +167,59 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Mobile drawer logic
-(function () {
-  const drawer = document.getElementById('mobileDrawer');
-  const overlay = document.getElementById('drawerOverlay');
-  const openBtn = document.getElementById('menuToggle');
-  const closeBtn = document.getElementById('drawerClose');
+// === NAV: single, conflict-free toggle ===
+document.addEventListener("DOMContentLoaded", function () {
+  const btn      = document.getElementById("menuToggle") || document.getElementById("hamburger");
+  const navUL    = document.getElementById("navLinks");
 
-  if (!drawer || !overlay || !openBtn || !closeBtn) return;
+  // Drawer bits (optional)
+  const drawer   = document.getElementById("mobileDrawer");
+  const overlay  = document.getElementById("drawerOverlay");
+  const closeBtn = document.getElementById("drawerClose");
 
-  function openDrawer() {
-    drawer.classList.add('active');
-    overlay.classList.add('active');
-    overlay.hidden = false;
-    drawer.setAttribute('aria-hidden', 'false');
-    openBtn.setAttribute('aria-expanded', 'true');
-    const firstLink = drawer.querySelector('a');
-    setTimeout(() => firstLink && firstLink.focus(), 10);
-    document.documentElement.style.overflow = 'hidden';
-  }
-
-  function closeDrawer() {
-    drawer.classList.remove('active');
-    overlay.classList.remove('active');
-    drawer.setAttribute('aria-hidden', 'true');
-    openBtn.setAttribute('aria-expanded', 'false');
-    document.documentElement.style.overflow = '';
-    setTimeout(() => { overlay.hidden = true; }, 250);
-  }
-
-  openBtn.addEventListener('click', openDrawer);
-  closeBtn.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
-  window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && drawer.classList.contains('active')) closeDrawer();
-  });
-})();
-// ---- Mobile nav handler (drawer if present, else dropdown UL) ----
-(function () {
-  // support both old and new ids
-  const openBtn = document.getElementById('menuToggle') || document.getElementById('hamburger');
-
-  // drawer elements (optional)
-  const drawer   = document.getElementById('mobileDrawer');
-  const overlay  = document.getElementById('drawerOverlay');
-  const closeBtn = document.getElementById('drawerClose');
-
-  // fallback UL
-  const navUL = document.getElementById('navLinks');
-
-  if (!openBtn) return;
+  if (!btn) return;
 
   function openDrawer() {
     if (!drawer || !overlay) return false;
-    drawer.classList.add('active');
-    overlay.classList.add('active');
     overlay.hidden = false;
-    document.documentElement.style.overflow = 'hidden';
+    overlay.classList.add("active");
+    drawer.classList.add("active");
+    document.documentElement.style.overflow = "hidden";
     return true;
   }
-
   function closeDrawer() {
     if (!drawer || !overlay) return;
-    drawer.classList.remove('active');
-    overlay.classList.remove('active');
+    overlay.classList.remove("active");
+    drawer.classList.remove("active");
+    document.documentElement.style.overflow = "";
     setTimeout(() => (overlay.hidden = true), 250);
-    document.documentElement.style.overflow = '';
+  }
+  function toggleDrawerOrUL() {
+    // If drawer exists, toggle it; otherwise toggle UL
+    if (drawer && overlay) {
+      if (drawer.classList.contains("active")) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    } else if (navUL) {
+      navUL.classList.toggle("open");
+    }
   }
 
-  function toggleDropdownUL() {
-    if (!navUL) return;
-    navUL.classList.toggle('open');
+  btn.addEventListener("click", toggleDrawerOrUL);
+  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+  if (overlay)  overlay.addEventListener("click", closeDrawer);
+
+  // Close on Esc
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDrawer();
+  });
+
+  // Close drawer when a link inside is clicked (optional nice UX)
+  if (drawer) {
+    drawer.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") closeDrawer();
+    });
   }
-
-  openBtn.addEventListener('click', function () {
-    // try drawer first; if not present, fallback to UL toggle
-    if (!openDrawer()) toggleDropdownUL();
-  });
-
-  // close events for drawer
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  if (overlay)  overlay.addEventListener('click', closeDrawer);
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDrawer();
-  });
-})();
+});

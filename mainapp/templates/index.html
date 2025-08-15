@@ -5,9 +5,6 @@
 
 {% block content %}
 <div id="preloader"><span></span></div>
-<div class="glow-bg">
-  <div class="glow-orb"></div>
-  <div class="glow-orb"></div>
 </div>
 <section class="hero">
   <video class="hero-video" autoplay muted loop playsinline>
@@ -43,40 +40,60 @@
   <!-- Swiper -->
   <div class="swiper team-swiper">
     <div class="swiper-wrapper">
-      
+
+      <!-- Founder 1 -->
       <div class="swiper-slide">
         <div class="team-card">
           <img src="{% static 'img/8.zafi.jpeg' %}" alt="Huzaifa">
           <div class="team-details">
             <h3>Huzaifa</h3>
             <p>CEO & Founder</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- Founder 2 -->
       <div class="swiper-slide">
         <div class="team-card">
           <img src="{% static 'img/4.shery.jpeg' %}" alt="Shehryar Khan">
           <div class="team-details">
             <h3>Shehryar Khan</h3>
             <p>Creative Director</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
         </div>
       </div>
 
-    
+      <!-- Founder 3 -->
       <div class="swiper-slide">
         <div class="team-card">
           <img src="{% static 'img/9.AFTAB.jpeg' %}" alt="Aftab Ahmed">
           <div class="team-details">
             <h3>Aftab Ahmed</h3>
             <p>UI/UX Designer</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
         </div>
       </div>
-      
 
     </div>
+
     <!-- Navigation -->
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -84,16 +101,75 @@
 </section>
 
 
+{% comment %} our Experts {% endcomment %}
+<section class="experts-section" id="experts">
+    <h2 class="section-title">Our Experts</h2>
+    <p class="section-subtitle">Meet the people who make it all happen</p>
 
-<section class="campaign-gallery">
-  <h2>Our Recent Campaigns</h2>
-  <div class="gallery-grid">
-    <div class="gallery-item"><img src="{% static 'img/clients/1.jpeg' %}" alt="Campaign 1"></div>
-    <div class="gallery-item"><img src="{% static 'img/clients/2.jpeg' %}" alt="Campaign 2"></div>
-    <div class="gallery-item"><img src="{% static 'img/clients/3.jpeg' %}" alt="Campaign 3"></div>
-    <div class="gallery-item"><img src="{% static 'img/clients/4.jpeg' %}" alt="Campaign 4"></div>
-  </div>
+    <div class="experts-grid">
+
+        <!-- Expert Card 1 -->
+        <div class="expert-card">
+            <div class="expert-img">
+                <img src="{% static 'img/4.shery.jpeg' %}" alt="Shehryar Khan">
+            </div>
+            <h3>Shehryar Khan</h3>
+            <p class="designation">Digital Marketing Specialist</p>
+            <p class="bio">Expert in social media strategies, brand growth, and engagement campaigns.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <!-- Expert Card 2 -->
+        <div class="expert-card">
+            <div class="expert-img">
+              <img src="{% static 'img/5.areej.jpeg' %}" alt="Areej">
+            </div>
+            <h3>Areej</h3>
+            <p class="designation">Skecth Designer</p>
+            <p class="bio">Specializes in on-page & off-page SEO, analytics, and keyword research.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <!-- Expert Card 3 -->
+        <div class="expert-card">
+            <div class="expert-img">
+              <img src="{% static 'img/6.umair.jpeg' %}" alt="Umair Tahir">
+            </div>
+            <h3>Umair Tahir</h3>
+            <p class="designation">Video Editor</p>
+            <p class="bio">Professional Video Editor .</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+      <!-- Expert Card 4 -->
+        <div class="expert-card">
+            <div class="expert-img">
+              <img src="{% static 'img/3.shami.jpeg' %}" alt="Shami Khan">
+            </div>
+            <h3>Shami Khan</h3>
+            <p class="designation">Social Media Manager</p>
+            <p class="bio">Deal with All Clients and Control All Socila Media Of ASH Media Solutions.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+    </div>
 </section>
+
 
 
 <!-- ==== Clients Section ==== -->
@@ -164,38 +240,175 @@
     <p>Join hundreds of satisfied clients and experience the premium solutions we deliver.</p>
     <a href="#contact" class="cta-btn">Get in Touch</a>
 </section>
-{% comment %} packages section {% endcomment %}
-
-<!-- Services Section -->
+{% comment %} service section {% endcomment %}
 <section class="services" id="services">
-  <h2>Our Services</h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <i class="fas fa-bullhorn"></i>
-      <h3>Digital Marketing</h3>
-      <p>Boost your business presence with data-driven digital strategies and marketing campaigns.</p>
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+        
+        <!-- SMM -->
+        <div class="service-card">
+            <i class="fab fa-facebook-square"></i>
+            <h3>Social Media Marketing (SMM)</h3>
+            <ul>
+                <li>Social media account setup (Facebook, Instagram, LinkedIn, TikTok, etc.)</li>
+                <li>Content creation & design (posts, carousels, reels)</li>
+                <li>Social media calendar planning</li>
+                <li>Page growth & audience engagement</li>
+                <li>Hashtag strategy</li>
+                <li>Social media audit & optimization</li>
+            </ul>
+        </div>
+
+        <!-- Social Ads -->
+        <div class="service-card">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Social Media Advertising</h3>
+            <ul>
+                <li>Facebook & Instagram Ads</li>
+                <li>LinkedIn Ads</li>
+                <li>TikTok Ads</li>
+                <li>Ad campaign setup & management</li>
+                <li>Audience targeting</li>
+            </ul>
+        </div>
+
+        <!-- Branding -->
+        <div class="service-card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Branding & Visual Identity</h3>
+            <ul>
+                <li>Logo design</li>
+                <li>Brand kit development (colors, fonts, voice)</li>
+                <li>Brand messaging strategy</li>
+                <li>Social media templates</li>
+            </ul>
+        </div>
+
+        <!-- SEO -->
+        <div class="service-card">
+            <i class="fas fa-search"></i>
+            <h3>Search Engine Optimization (SEO)</h3>
+            <ul>
+                <li>On-page SEO (titles, meta tags, keywords)</li>
+                <li>Off Page SEO</li>
+                <li>Technical SEO</li>
+                <li>Keyword research</li>
+                <li>Google My Business optimization</li>
+            </ul>
+        </div>
+
+        <!-- Video Marketing -->
+        <div class="service-card">
+            <i class="fas fa-video"></i>
+            <h3>Video Marketing</h3>
+            <ul>
+                <li>Short video editing (reels, TikToks)</li>
+                <li>YouTube video editing</li>
+                <li>Animated explainer videos</li>
+            </ul>
+        </div>
+
+        <!-- Web Dev -->
+        <div class="service-card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Website Development & Optimization</h3>
+            <ul>
+                <li>WordPress, Shopify</li>
+                <li>Landing page design</li>
+                <li>Custom website</li>
+            </ul>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="service-card">
+            <i class="fab fa-whatsapp"></i>
+            <h3>WhatsApp & SMS Marketing</h3>
+            <ul>
+                <li>WhatsApp Business API setup</li>
+                <li>Campaign creation</li>
+            </ul>
+        </div>
+
+        <!-- Influencer -->
+        <div class="service-card">
+            <i class="fas fa-users"></i>
+            <h3>Influencer Marketing</h3>
+            <ul>
+                <li>Collaboration coordination</li>
+            </ul>
+        </div>
+
     </div>
-    <div class="service-card">
-      <i class="fas fa-paint-brush"></i>
-      <h3>Brand Design</h3>
-      <p>Create a memorable brand identity with our expert graphic and brand design solutions.</p>
-    </div>
-    <div class="service-card">
-      <i class="fas fa-chart-line"></i>
-      <h3>SEO & Analytics</h3>
-      <p>Improve your website ranking and track growth with advanced SEO and analytics tools.</p>
-    </div>
-  </div>
 </section>
 <!-- PortFolio Section -->
  <section class="portfolio" id="portfolio">
   <h2>Our Portfolio</h2>
   <div class="gallery-grid">
     <div class="gallery-item"><img src="{% static 'img/1.jpeg' %}" alt="Campaign 1"></div>
-    <div class="gallery-item"><img src="{% static 'img/campaign2.jpg' %}" alt="Campaign 2"></div>
-    <div class="gallery-item"><img src="{% static 'img/campaign3.jpg' %}" alt="Campaign 3"></div>
-    <div class="gallery-item"><img src="{% static 'img/campaign4.jpg' %}" alt="Campaign 4"></div>
+    <div class="gallery-item"><img src="{% static 'img/1.jpeg' %}" alt="Campaign 2"></div>
+    <div class="gallery-item"><img src="{% static 'img/1.jpeg' %}" alt="Campaign 3"></div>
+    <div class="gallery-item"><img src="{% static 'img/1.jpeg' %}" alt="Campaign 4"></div>
   </div>
+</section>
+{% comment %} pakages  {% endcomment %}
+<section class="packages-section">
+    <h2 class="section-title">Our Packages</h2>
+    <div class="carousel-container">
+        <div class="carousel">
+            <!-- BASIC -->
+            <div class="package-card">
+                <h3>BASIC</h3>
+                <p class="tagline">Best for Startups & Small Businesses Facebook</p>
+                <ul>
+                    <li>Strategic content calendar</li>
+                    <li>4 posts per week</li>
+                    <li>1 reel per week</li>
+                    <li>Engagement handling</li>
+                    <li>Captivating caption writing</li>
+                    <li>SEO–optimized keywords</li>
+                    <li>16 graphics/carousels</li>
+                    <li>4 ads per month</li>
+                    <li>Monthly performance reporting</li>
+                </ul>
+                <div class="price">40K / Month</div>
+            </div>
+
+            <!-- STANDARD -->
+            <div class="package-card">
+                <h3>STANDARD</h3>
+                <p class="tagline">Best for Growing Brands Looking to Scale Facebook, Instagram</p>
+                <ul>
+                    <li>Brand re-positioning & content strategy</li>
+                    <li>In-depth content planning & calendar</li>
+                    <li>Competitor analysis</li>
+                    <li>5 posts per week</li>
+                    <li>2 reels per week</li>
+                    <li>Engagement management</li>
+                    <li>Ad management & planning</li>
+                    <li>Monthly performance reporting</li>
+                </ul>
+                <div class="price">80K / Month</div>
+            </div>
+
+            <!-- PREMIUM -->
+            <div class="package-card">
+                <h3>PREMIUM</h3>
+                <p class="tagline">Best for Established Brands & Agencies</p>
+                <ul>
+                    <li>Full brand revamping & visual branding</li>
+                    <li>360-degree marketing</li>
+                    <li>Plan & digital strategy</li>
+                    <li>Advanced content creation (design + video)</li>
+                    <li>Weekly competitor research</li>
+                    <li>Daily engagement & connection building</li>
+                    <li>Complete ad strategy setup</li>
+                    <li>Dedicated ad manager monitoring</li>
+                    <li>Monthly analytics report with growth roadmap</li>
+                </ul>
+                <div class="price">100K / Month</div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Testimonials Section -->

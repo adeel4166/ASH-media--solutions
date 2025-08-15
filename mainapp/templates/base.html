@@ -14,6 +14,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
       crossorigin="anonymous" referrerpolicy="no-referrer">
+      <!-- Font Awesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
 
 
@@ -206,42 +209,32 @@
   <script src="{% static 'js/app.js' %}"></script>
 
 <script>
-  // Team Swiper — 3D coverflow with near-continuous motion
-  document.addEventListener('DOMContentLoaded', function(){
-    const swiper = new Swiper('.team-swiper', {
-      effect: 'coverflow',
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      loop: true,
-      loopAdditionalSlides: 8,       // avoid gaps
-      watchSlidesProgress: true,     // important for coverflow
-      speed: 2200,                   // transition duration
-      autoplay: {
-        delay: 400,                  // small delay = almost continuous feel
-        disableOnInteraction: false,
-        pauseOnMouseEnter: false
-      },
-      grabCursor: true,
-      coverflowEffect: {
-        rotate: 60,
-        stretch: 0,
-        depth: 300,
-        modifier: 1.2,
-        slideShadows: true
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
-      on: {
-        init() {
-          if (this.autoplay) this.autoplay.start(); // make sure it starts
-          const slides = document.querySelectorAll('.team-swiper .swiper-slide');
-          slides.forEach((s, i) => setTimeout(() => s.classList.add('animate-slide'), i * 150));
-        }
-      }
-    });
+document.addEventListener('DOMContentLoaded', function(){
+  const swiper = new Swiper('.team-swiper', {
+    effect: 'coverflow',
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    loop: true,
+    loopAdditionalSlides: 5,
+    speed: 2500,
+    autoplay: {
+      delay: 1,
+      disableOnInteraction: false
+    },
+    grabCursor: true,
+    coverflowEffect: {
+      rotate: 60,
+      stretch: 0,
+      depth: 250,
+      modifier: 1.2,
+      slideShadows: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
   });
+});
 </script>
 
 {% comment %}  contact form {% endcomment %}

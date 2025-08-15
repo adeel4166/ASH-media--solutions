@@ -57,6 +57,8 @@ function initScrollAnimations() {
     gsap.from(heroContent, { opacity: 0, x: 50, duration: 1.2, scrollTrigger: { trigger: heroContent, start: "top 80%" } });
   }
 }
+// team section founder wala
+
 
 // === GSAP NAVBAR LINK EFFECTS ===
 function initNavbarLinkEffects() {
@@ -135,39 +137,6 @@ if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
     scrollTrigger: { trigger: ".pro-footer", start: "top 90%" }
   });
 }
-
-
-// pakages section
-// Swiper initialization
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 3,
-  spaceBetween: 30,
-  centeredSlides: true,
-  loop: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  breakpoints: {
-    1024: { slidesPerView: 3 },
-    768: { slidesPerView: 1 },
-  }
-});
-
-
-// Safe fade-in for packages carousel
-document.addEventListener("DOMContentLoaded", () => {
-  const el = document.querySelector(".packages-carousel");
-  if (el) el.classList.add("show");
-});
 
 // === NAV: single, conflict-free toggle ===
 document.addEventListener("DOMContentLoaded", function () {
@@ -344,4 +313,54 @@ document.addEventListener('DOMContentLoaded', () => {
   overlay.addEventListener('click', close);
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   drawer.addEventListener('click', (e) => { if (e.target.closest('a')) close(); });
+});
+
+// service section
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".service-card");
+
+    const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < triggerBottom) {
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+                card.style.transition = "all 0.6s ease-out";
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+});
+
+
+// our experts
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".expert-card");
+
+    const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < triggerBottom) {
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+                card.style.transition = "all 0.6s ease-out";
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+});
+
+// pakages section
+document.querySelector(".carousel").addEventListener("mouseover", function(){
+    this.style.animationPlayState = "paused";
+});
+document.querySelector(".carousel").addEventListener("mouseout", function(){
+    this.style.animationPlayState = "running";
 });

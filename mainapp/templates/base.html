@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/clients.css' %}">
     {% comment %} footter {% endcomment %}
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-    integrity="sha512-pap6Fp5tqTQtFwg0R6/2D7N38ZRPbZQ+1zDqzscJNNYtIXtK6jxZsMJn8LzvU2+IcbL8NuxGhfC1zV7iKgN9xA==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+
 
 
     
@@ -72,7 +72,7 @@
 </head>
 <body>
   <!-- ===== Header ===== -->
-  <header>
+<header>
   <nav class="navbar">
     <div class="logo">
       <img src="{% static 'img/7.logo.png' %}" alt="ASH Media Solutions Logo">
@@ -99,10 +99,11 @@
   </nav>
 </header>
 
-<!-- Overlay + Drawer MUST be outside header/nav -->
+<!-- Overlay -->
 <div id="drawerOverlay" class="drawer-overlay" hidden></div>
 
-<nav id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+<!-- Mobile Drawer -->
+<nav id="mobileDrawer" class="mobile-drawer" aria-hidden="true" hidden>
   <button id="drawerClose" class="drawer-close" aria-label="Close menu">×</button>
   <ul class="drawer-list">
     <li><a href="{% url 'home' %}">Home</a></li>
@@ -114,6 +115,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+
 
   <!-- ===== Main Content ===== -->
   <main>
@@ -195,7 +197,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script src="https://kit.fontawesome.com/2e5dbf0f9f.js" crossorigin="anonymous"></script>
+  
 
 
   <!-- ===== Custom JS ===== -->
@@ -203,13 +205,23 @@
   <script src="{% static 'js/clients.js' %}"></script>
   <script src="{% static 'js/app.js' %}"></script>
 
-  <!-- ===== Team Swiper 3D Carousel ===== -->
-  <script>
-    var swiper = new Swiper('.team-swiper', {
+<script>
+  // Team Swiper — 3D coverflow with near-continuous motion
+  document.addEventListener('DOMContentLoaded', function(){
+    const swiper = new Swiper('.team-swiper', {
       effect: 'coverflow',
-      grabCursor: true,
       centeredSlides: true,
       slidesPerView: 'auto',
+      loop: true,
+      loopAdditionalSlides: 8,       // avoid gaps
+      watchSlidesProgress: true,     // important for coverflow
+      speed: 2200,                   // transition duration
+      autoplay: {
+        delay: 400,                  // small delay = almost continuous feel
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false
+      },
+      grabCursor: true,
       coverflowEffect: {
         rotate: 60,
         stretch: 0,
@@ -217,30 +229,22 @@
         modifier: 1.2,
         slideShadows: true
       },
-      loop: true,
-      speed: 2000,
-      autoplay: {
-        delay: 1,
-        disableOnInteraction: false
-      },
-      freeMode: true,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
       on: {
-        init: function () {
-          let slides = document.querySelectorAll('.team-swiper .swiper-slide');
-          slides.forEach((slide, index) => {
-            setTimeout(() => { slide.classList.add('animate-slide'); }, index * 150);
-          });
+        init() {
+          if (this.autoplay) this.autoplay.start(); // make sure it starts
+          const slides = document.querySelectorAll('.team-swiper .swiper-slide');
+          slides.forEach((s, i) => setTimeout(() => s.classList.add('animate-slide'), i * 150));
         }
       }
     });
-  </script>
+  });
+</script>
+
 {% comment %}  contact form {% endcomment %}
-<!-- EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 
 <!-- EmailJS SDK -->

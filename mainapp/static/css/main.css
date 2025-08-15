@@ -14,7 +14,7 @@ a { text-decoration: none; }
 /* === PRELOADER === */
 #preloader {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: #fff; display: flex; align-items: center; justify-content: center;
+  background: #1d1b1b; display: flex; align-items: center; justify-content: center;
   z-index: 9999;
 }
 #preloader span {
@@ -184,24 +184,43 @@ header nav a:hover::after { width: 100%; }
 .contact button { align-self: center; }
 
 /* === TEAM SECTION (Premium 3D) === */
-.team-section { background: #000; padding: 80px 50px; text-align: center; }
-.team-heading h2 { font-size: 2.4rem; font-weight: 700; color: #4ba3ff; margin-bottom: 10px; text-shadow: 0 0 10px rgba(75,163,255,0.8); animation: glowPulse 2s ease-in-out infinite; }
-.team-heading .underline { display: inline-block; width: 80px; height: 4px; background: linear-gradient(90deg, #ff4b2b, #ff416c); border-radius: 2px; animation: underlineAnim 2s ease-in-out infinite; margin-bottom: 20px; }
-.team-heading p { color: #ccc; font-size: 1rem; margin-bottom: 40px; }
-.team-swiper { width: 100%; max-width: 1200px; margin: auto; padding: 40px 0; }
-.swiper-slide { width: auto; max-width: 350px; height: 450px; position: relative; border-radius: 15px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.team-card { display: flex; flex-direction: column; background: #111; border-radius: 15px; overflow: hidden; height: 100%; transition: box-shadow 0.3s ease; }
-.team-card img { width: 100%; height: 320px; object-fit: cover; transition: transform 0.4s ease; }
-.team-details { padding: 20px 10px; text-align: center; }
-.team-details h3 { font-size: 1.6rem; font-weight: bold; color: #fff; margin-bottom: 5px; text-shadow: 0 0 5px rgba(255,255,255,0.8); }
-.team-details p { font-size: 1.1rem; color: #ddd; text-shadow: 0 0 3px rgba(255,255,255,0.5); }
-.swiper-slide:hover img { transform: scale(1.08); }
-.swiper-slide:hover .team-card { box-shadow: 0 0 30px rgba(255,65,108,0.8); }
-.swiper-slide-active { box-shadow: 0 0 30px rgba(255,65,108,0.8), 0 0 60px rgba(75,163,255,0.6); }
-.swiper-slide-active img { transform: scale(1.05); }
-.swiper-button-next, .swiper-button-prev { color: #ff416c; text-shadow: 0 0 10px rgba(255,65,108,0.8); }
-@keyframes glowPulse { 0% { text-shadow: 0 0 10px rgba(75,163,255,0.8), 0 0 20px rgba(75,163,255,0.6);} 50% { text-shadow: 0 0 20px rgba(75,163,255,1), 0 0 40px rgba(75,163,255,0.9);} 100% { text-shadow: 0 0 10px rgba(75,163,255,0.8), 0 0 20px rgba(75,163,255,0.6);} }
-@keyframes underlineAnim { 0%,100% { transform: scaleX(1); opacity: 1;} 50% { transform: scaleX(0.5); opacity: 0.6;} }
+.team-section { background:#000; padding:80px 50px; text-align:center; }
+.team-heading h2{ font-size:2.4rem; font-weight:700; color:#4ba3ff; margin-bottom:10px; text-shadow:0 0 10px rgba(75,163,255,.8); animation: glowPulse 2s ease-in-out infinite; }
+.team-heading .underline{ display:inline-block; width:80px; height:4px; background:linear-gradient(90deg,#ff4b2b,#ff416c); border-radius:2px; animation: underlineAnim 2s ease-in-out infinite; margin-bottom:20px; }
+.team-heading p{ color:#ccc; font-size:1rem; margin-bottom:40px; }
+
+.team-swiper{ width:100%; max-width:1200px; margin:auto; padding:40px 0; perspective:1200px; } /* perspective ADDED */
+
+.swiper-slide{
+  /* IMPORTANT: Swiper control karta hai transform; yahan transform transition mat do */
+  width:300px;               /* base width for slidesPerView:'auto' */
+  max-width:350px;
+  height:450px;
+  position:relative;
+  border-radius:15px;
+  overflow:hidden;
+  transition: box-shadow .3s ease;   /* transform transition removed */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.team-card{ display:flex; flex-direction:column; background:#111; border-radius:15px; overflow:hidden; height:100%; transition: box-shadow .3s ease; }
+.team-card img{ width:100%; height:320px; object-fit:cover; transition: transform .4s ease; }
+.team-details{ padding:20px 10px; text-align:center; }
+.team-details h3{ font-size:1.6rem; font-weight:bold; color:#fff; margin-bottom:5px; text-shadow:0 0 5px rgba(255,255,255,.8); }
+.team-details p{ font-size:1.1rem; color:#ddd; text-shadow:0 0 3px rgba(255,255,255,.5); }
+
+.swiper-slide:hover img{ transform: scale(1.08); }
+.swiper-slide:hover .team-card{ box-shadow:0 0 30px rgba(255,65,108,.8); }
+.swiper-slide-active{ box-shadow:0 0 30px rgba(255,65,108,.8), 0 0 60px rgba(75,163,255,.6); }
+.swiper-slide-active img{ transform: scale(1.05); }
+.swiper-button-next, .swiper-button-prev{ color:#ff416c; text-shadow:0 0 10px rgba(255,65,108,.8); }
+
+@keyframes glowPulse{ 0%{text-shadow:0 0 10px rgba(75,163,255,.8),0 0 20px rgba(75,163,255,.6);} 50%{text-shadow:0 0 20px rgba(75,163,255,1),0 0 40px rgba(75,163,255,.9);} 100%{text-shadow:0 0 10px rgba(75,163,255,.8),0 0 20px rgba(75,163,255,.6);} }
+@keyframes underlineAnim{ 0%,100%{ transform:scaleX(1); opacity:1;} 50%{ transform:scaleX(.5); opacity:.6;} }
+
+/* If you previously added linear timing for continuous marquee, REMOVE it for 3D:
+.team-swiper .swiper-wrapper { transition-timing-function: linear !important; }
+*/
 
 /* === CLIENTS SECTION === */
 .clients-section { background: #f5f5f5; padding: 40px 0; overflow: hidden; }
@@ -459,79 +478,107 @@ body {
     width: 80% !important;
   }
 }
-/* === NAVBAR FINAL (place at the very end of main.css) === */
+/* ===== NAV + DRAWER (final overrides) ===== */
 
-/* Drawer + hamburger (keep) */
-.hamburger {
-  display: inline-flex; gap: 6px; flex-direction: column;
-  width: 44px; height: 44px; justify-content: center; align-items: center;
-  background: #fff; border: 1px solid #e6e6e6; border-radius: 10px; cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0,0,0,.06);
-  position: relative; z-index: 3002;         /* ensure clickable */
+/* Header always above hero */
+header{ position: sticky; top:0; z-index:3000; }
+.navbar{ position:relative; z-index:3001; }
+
+/* Hamburger */
+.hamburger{
+  display:inline-flex; gap:6px; flex-direction:column;
+  width:44px; height:44px; justify-content:center; align-items:center;
+  background:#fff; border:1px solid #e6e6e6; border-radius:10px; cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  position:relative; z-index:3002;
 }
-.hamburger span { display:block; width:20px; height:2px; background:#111; border-radius:2px; }
+.hamburger span{ display:block; width:20px; height:2px; background:#111; border-radius:2px; }
 
-/* Keep header above hero */
-header { position: sticky; top: 0; z-index: 3000; }
-.navbar { position: relative; z-index: 3001; }
-
-/* Desktop: show inline links */
-.nav-links {
-  display: flex;
-  gap: 22px;
-  list-style: none;
-  margin: 0; padding: 0;
+/* Desktop nav links visible */
+.nav-links{
+  display:flex; gap:22px; list-style:none; margin:0; padding:0;
 }
-.nav-links a { color:#111; text-decoration:none; padding:10px 8px; }
+.nav-links a{ color:#111; text-decoration:none; padding:10px 8px; }
 
-/* Mobile drawer overlay/panel */
-.drawer-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,.35);
-  opacity: 0; pointer-events: none; transition: opacity .25s ease; z-index: 2999;
-}
-.drawer-overlay.active { opacity: 1; pointer-events: auto; }
-
-.mobile-drawer {
-  position: fixed; top:0; right:0; height:100vh; width:78%; max-width:340px; background:#fff;
-  border-left: 1px solid rgba(0,0,0,.06); box-shadow: -12px 0 24px rgba(0,0,0,.08);
-  transform: translateX(100%); transition: transform .28s ease; z-index: 3001;
-  padding:18px; overflow-y:auto; border-top-left-radius:12px; border-bottom-left-radius:12px;
-}
-.mobile-drawer.active { transform: translateX(0); }
-
-.drawer-close {
-  appearance:none; border:0; background:#f5f6f8; color:#111; font-size:28px; line-height:1;
-  width:38px; height:38px; border-radius:10px; cursor:pointer;
-  display:inline-flex; align-items:center; justify-content:center;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
-}
-
-.drawer-list { list-style:none; margin:18px 0 0; padding:0; }
-.drawer-list li { border-bottom:1px dashed #efefef; }
-.drawer-list a { display:block; padding:12px 4px; text-decoration:none; color:#1c1c1c; font-weight:500; }
-.drawer-list a:hover { color:#0b65ff; }
-
-/* Mobile: hide inline UL, show when toggled; burger visible */
-@media (max-width: 991px){
+/* Mobile: inline UL hidden, shown only when .open */
+@media (max-width:991px){
   .nav-links{
-    display: none;
-    position: absolute;
-    top: 64px; right: 12px; left: 12px;
-    background: #fff; border: 1px solid #eee; border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
-    padding: 8px 0;
-    flex-direction: column;
-    z-index: 3001;
+    display:none;
+    position:absolute; top:64px; right:12px; left:12px;
+    background:#fff; border:1px solid #eee; border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    padding:8px 0; flex-direction:column; z-index:3001;
   }
-  .nav-links.open{ display: flex; }
-  .nav-links li{ border-bottom: 1px dashed #efefef; }
-  .nav-links li:last-child{ border-bottom: 0; }
+  .nav-links.open{ display:flex; }
+  .nav-links li{ border-bottom:1px dashed #efefef; }
+  .nav-links li:last-child{ border-bottom:0; }
   .nav-links a{ display:block; padding:12px 16px; color:#111; }
-
   .hamburger{ display:inline-flex !important; }
 }
-
-/* Desktop: hide burger */
-@media (min-width: 992px){
-  .hamburger{ display:none; }
+/* Desktop: hamburger hide */
+@media (min-width:992px){
+  .hamburger{ display:none !important; }
 }
+
+/* -------- Drawer (only use ID to avoid conflicts) -------- */
+#drawerOverlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.35);
+  opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:2999;
+}
+#drawerOverlay.active{ opacity:1; pointer-events:auto; }
+
+/* Hidden off-canvas by default (visible when .active moves it in) */
+#mobileDrawer{
+  position:fixed; top:0; right:0; height:100vh; width:78%; max-width:340px;
+  background:#fff; border-left:1px solid rgba(0,0,0,.06);
+  box-shadow:-12px 0 24px rgba(0,0,0,.08);
+  transform:translateX(100%) !important; transition:transform .28s ease;
+  display:block; padding:18px; overflow-y:auto;
+  border-top-left-radius:12px; border-bottom-left-radius:12px; z-index:3001;
+}
+#mobileDrawer.active{ transform:translateX(0) !important; }
+
+/* Drawer list reset (no bullets) */
+#mobileDrawer .drawer-list{
+  list-style:none; margin:18px 0 0; padding:0;
+}
+#mobileDrawer .drawer-list li{ border-bottom:1px dashed #efefef; }
+#mobileDrawer .drawer-list li:last-child{ border-bottom:0; }
+#mobileDrawer .drawer-list a{ display:block; padding:12px 16px; color:#111; }
+
+/* Desktop par drawer hamesha hide */
+@media (min-width:992px){
+  #mobileDrawer{ display:none !important; }
+}
+#mobileDrawer { transform: translateX(100%) !important; }  /* off-canvas by default */
+#mobileDrawer.active { transform: translateX(0) !important; }
+#mobileDrawer .drawer-list { list-style: none; margin: 18px 0 0; padding: 0; }
+/* Drawer-only mode: never show UL menu on mobile */
+@media (max-width: 991px){
+  .nav-links,
+  .nav-links.open,
+  .nav-links.show { display: none !important; }
+}
+
+/* Keep desktop links visible */
+@media (min-width: 992px){
+  .nav-links { display: flex !important; }
+}
+
+@media (max-width: 991px){
+  .nav-links, .nav-links.open, .nav-links.show { display: none !important; }
+}
+
+
+button, a, .hamburger { touch-action: manipulation; }
+
+
+.hero-content h1 { will-change: filter, transform; } /* ya text-shadow ki animation ko reduce karo */
+
+#mobileDrawer { transform: translateX(100%) !important; transition: transform .28s ease; }
+#mobileDrawer.active { transform: translateX(0) !important; }
+#drawerOverlay { opacity:0; pointer-events:none; transition:opacity .25s ease; }
+#drawerOverlay.active { opacity:1; pointer-events:auto; }
+@media (min-width:992px){ #mobileDrawer{ display:none !important; } }
+
+

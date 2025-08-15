@@ -112,9 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // === INIT GSAP ANIMATIONS ===
 if (typeof gsap !== 'undefined') {
   if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
-  initShapeAnimations();
-  initScrollAnimations();
-  initNavbarLinkEffects();
+
+  if (typeof initShapeAnimations === 'function') initShapeAnimations();
+  if (typeof initScrollAnimations === 'function') initScrollAnimations();
+  if (typeof initNavbarLinkEffects === 'function') initNavbarLinkEffects();
 }
 
 // Newsletter form submission success animation
@@ -161,11 +162,12 @@ var swiper = new Swiper(".mySwiper", {
   }
 });
 
-// Fade-in animation on page load
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".packages-carousel").classList.add("show");
-});
 
+// Safe fade-in for packages carousel
+document.addEventListener("DOMContentLoaded", () => {
+  const el = document.querySelector(".packages-carousel");
+  if (el) el.classList.add("show");
+});
 
 // === NAV: single, conflict-free toggle ===
 document.addEventListener("DOMContentLoaded", function () {
@@ -179,21 +181,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!btn) return;
 
+  // Ensure initial state (hidden on page load)
+  if (overlay) overlay.hidden = true;
+  if (drawer) {
+    drawer.classList.remove("active");
+    drawer.setAttribute("aria-hidden", "true");
+  }
+  if (btn) btn.setAttribute("aria-expanded", "false");
+
   function openDrawer() {
     if (!drawer || !overlay) return false;
     overlay.hidden = false;
     overlay.classList.add("active");
     drawer.classList.add("active");
+    drawer.setAttribute("aria-hidden", "false");
+    btn.setAttribute("aria-expanded", "true");
     document.documentElement.style.overflow = "hidden";
     return true;
   }
+
   function closeDrawer() {
     if (!drawer || !overlay) return;
     overlay.classList.remove("active");
     drawer.classList.remove("active");
+    drawer.setAttribute("aria-hidden", "true");
+    btn.setAttribute("aria-expanded", "false");
     document.documentElement.style.overflow = "";
     setTimeout(() => (overlay.hidden = true), 250);
   }
+
   function toggleDrawerOrUL() {
     // If drawer exists, toggle it; otherwise toggle UL
     if (drawer && overlay) {
@@ -216,10 +232,116 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "Escape") closeDrawer();
   });
 
-  // Close drawer when a link inside is clicked (optional nice UX)
+  // Close drawer when a link inside is clicked (any descendant of <a>)
   if (drawer) {
     drawer.addEventListener("click", (e) => {
-      if (e.target.tagName === "A") closeDrawer();
+      if (e.target.closest("a")) closeDrawer();
     });
   }
+});
+// === NAV: hidden-based drawer toggle (conflict-free) ===
+document.addEventListener("DOMContentLoaded", function () {
+  const btn      = document.getElementById("menuToggle");   // hamburger
+  const navUL    = document.getElementById("navLinks");      // desktop/mobile inline UL
+
+  const drawer   = document.getElementById("mobileDrawer");  // slide drawer
+  const overlay  = document.getElementById("drawerOverlay"); // page overlay
+  const closeBtn = document.getElementById("drawerClose");   // × button
+
+  if (!btn) return;
+
+  // Initial state: force hidden
+  if (overlay) overlay.hidden = true;
+  if (drawer) {
+    drawer.hidden = true;
+    drawer.classList.remove("active");
+    drawer.setAttribute("aria-hidden", "true");
+  }
+  btn.setAttribute("aria-expanded", "false");
+
+  function openDrawer() {
+    if (!drawer || !overlay) return false;
+    overlay.hidden = false;
+    drawer.hidden  = false;         // unhide so transition can run
+    drawer.offsetHeight;            // reflow
+    overlay.classList.add("active");
+    drawer.classList.add("active");
+    drawer.setAttribute("aria-hidden", "false");
+    btn.setAttribute("aria-expanded", "true");
+    document.documentElement.style.overflow = "hidden";
+    return true;
+  }
+
+  function closeDrawer() {
+    if (!drawer || !overlay) return;
+    overlay.classList.remove("active");
+    drawer.classList.remove("active");
+    drawer.setAttribute("aria-hidden", "true");
+    btn.setAttribute("aria-expanded", "false");
+    document.documentElement.style.overflow = "";
+    setTimeout(() => { overlay.hidden = true; drawer.hidden = true; }, 280);
+  }
+
+  function toggle() {
+    // Drawer present? use it. Otherwise fallback: toggle UL for small screens.
+    if (drawer && overlay) {
+      drawer.classList.contains("active") ? closeDrawer() : openDrawer();
+    } else if (navUL) {
+      navUL.classList.toggle("open");
+    }
+  }
+
+  btn.addEventListener("click", toggle);
+  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+  if (overlay)  overlay.addEventListener("click", closeDrawer);
+  window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
+
+  // Close when a drawer link is clicked
+  if (drawer) {
+    drawer.addEventListener("click", (e) => { if (e.target.closest("a")) closeDrawer(); });
+  }
+});
+// === Drawer-only nav (kills UL dropdown) ===
+document.addEventListener('DOMContentLoaded', () => {
+  const btn     = document.getElementById('menuToggle');
+  const drawer  = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const closeBtn= document.getElementById('drawerClose');
+  const navUL   = document.getElementById('navLinks');
+
+  if (!btn || !drawer || !overlay) return;
+
+  // initial state
+  overlay.hidden = true;
+  drawer.hidden  = true;
+  drawer.classList.remove('active');
+  btn.setAttribute('aria-expanded','false');
+  if (navUL) navUL.classList.remove('open');   // ensure UL closed
+
+  function open() {
+    overlay.hidden = false;
+    drawer.hidden  = false;
+    drawer.offsetHeight; // reflow for transition
+    overlay.classList.add('active');
+    drawer.classList.add('active');
+    btn.setAttribute('aria-expanded','true');
+    document.documentElement.style.overflow = 'hidden';
+    if (navUL) navUL.classList.remove('open'); // keep UL shut
+  }
+  function close() {
+    overlay.classList.remove('active');
+    drawer.classList.remove('active');
+    btn.setAttribute('aria-expanded','false');
+    document.documentElement.style.overflow = '';
+    setTimeout(() => { overlay.hidden = true; drawer.hidden = true; }, 280);
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    drawer.classList.contains('active') ? close() : open();
+  });
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', close);
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  drawer.addEventListener('click', (e) => { if (e.target.closest('a')) close(); });
 });
